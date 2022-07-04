@@ -1,15 +1,26 @@
 # Smart Home
-Portótipo de uma smart home utilizando arduino com wifi, desenvolvido no 1º e 2° trimestre nas aulas de Fabricação Digital e Robótica
+Projeto de automatização desenvolvido para casas do programa Minha Casa Minha Vida
+
+<img src="https://user-images.githubusercontent.com/72043658/177170197-6f09071e-ab44-4879-8e43-a5b17cde7801.png" width="400">
+
+- **Representação da casa**
+
+A maquete da casa segue uma representação na escala 1x25 centimetros, o programa Minha Casa minha vida estabelece como o padrão 70 metros quadrados, que na escala ficara 40cm x 28cm. Também, os móveis forão impressos na mesma escala da casa, foram impressos na impressora Creality Ender 3, e as peças para a casa na cortadora a laser Due Next.
+
+- **Sistema eletronico**
+
+Para prototipar o sistema elétrico da casa, utilizamos um Arduino Uno conectado com um NodeMCU para conexão a internet, varios sensores foram incrementados para aprimorar as decisões automatizadas e controlar sistemas como temperatura, iluminação e segurança
 
 <div>
-  <img src="https://user-images.githubusercontent.com/72043658/176972247-169bf7eb-74ca-42ae-80ee-a9632a8ef086.png" width="100">
-  <img src="https://user-images.githubusercontent.com/72043658/176972326-4a8c13eb-c896-4fe1-92da-49ad1aff1612.png" width="100">
+  <img src="https://user-images.githubusercontent.com/72043658/177171983-67287662-9fb8-4af7-bb34-0f16ded33826.png" width="300">
+  <img src="https://user-images.githubusercontent.com/72043658/177172295-58a63c89-ad4d-4464-b4de-23ee3f7a351d.png" width="350">
 </div>
 
-- **Protótipo da casa:**
+- **Lista de sensores presentes na casa**
 
-  A casa foi construida na escala 1x25cm em mdf, as peças foram feitas na cortadora a laser e os móveis foram impressos na impressora 3D seguindo a razão e proporção da casa.
-<div>
-  <img src="https://user-images.githubusercontent.com/72043658/176972595-02b495b3-2969-4118-a436-81241c5f280f.png" width="50">
-  <img src="https://user-images.githubusercontent.com/72043658/176972596-1ce37211-6a3b-43c5-8408-499c9c0a5120.png" width="50">
-</div>
+xxx-xxx-xxx
+xxx-xxx-xxx
+xxx-xxx-xxx
+
+- **Tecnologias utilizadas**
+ <img src="https://user-images.githubusercontent.com/72043658/176972326-4a8c13eb-c896-4fe1-92da-49ad1aff1612.png" width="100">

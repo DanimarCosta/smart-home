@@ -5,23 +5,10 @@
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <Adafruit_Sensor.h>
-#include <DHT.h>
 
 // Coloque as credenciais da sua rede
-const char* ssid = "minharedewifi;
-const char* password = "minhasenhawifi";
-
-#define DHTPIN 5     // Digital pin D1 connected to the DHT sensor
-
-//defino tipo de sensor em uso:
-#define DHTTYPE    DHT11     // DHT 11
-
-
-DHT dht(DHTPIN, DHTTYPE);
-
-// Temperatura e humidades atual
-float t = 0.0;
-float h = 0.0;
+const char* ssid = "ESP82Danimar";
+const char* password = "Arduino123";
 
 // Criando um webserver
 AsyncWebServer server(80);
@@ -72,7 +59,6 @@ const char index_html[] PROGMEM = R"rawliteral(
   <p>
     <i class="fab fa-youtube" style="font-size:1.0rem;color:red;"></i>
     <span style="font-size:1.0rem;">Inscreva se:</span>
-    <a href="https://www.youtube.com/channel/UCbQCNuVYocAGOWQkn1FwGjg" target="_blank" style="font-size:1.0rem;">TechMundo inscreva se no nosso canal</a>
   </P>
 </body>
 <script>
@@ -100,22 +86,9 @@ setInterval(function ( ) {
 </script>
 </html>)rawliteral";
 
-// Replaces placeholder with DHT values
-String processor(const String& var){
-  //Serial.println(var);
-  if(var == "TEMPERATURE"){
-    return String(t);
-  }
-  else if(var == "HUMIDITY"){
-    return String(h);
-  }
-  return String();
-}
-
 void setup(){
   // porta serial para debugar
   Serial.begin(115200);
-  dht.begin();
   
   // Connect to Wi-Fi
   WiFi.begin(ssid, password);
@@ -130,43 +103,12 @@ void setup(){
 
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/html", index_html, processor);
-  });
-  server.on("/temperature", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", String(t).c_str());
-  });
-  server.on("/humidity", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", String(h).c_str());
+    request->send_P(200, "text/html", index_html);
   });
 
   // Start server
   server.begin();
 }
  
-void loop(){  
-  unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= interval) {
-    // Salva a ultima leitura feita
-    previousMillis = currentMillis;
-    // Ler a tempeatura em Graus Celsius
-    float newT = dht.readTemperature();
-      // Se falhar em ler o sensor de temeratura
-    if (isnan(newT)) {
-      Serial.println("Falha ao ler o sensor de temperatura!");
-    }
-    else {
-      t = newT;
-      Serial.println(t);
-    }
-    // Read Humidity
-    float newH = dht.readHumidity();
-    // Se falhar em ler o sensor umidade 
-    if (isnan(newH)) {
-      Serial.println("Falha ao ler o Sensor umidade");
-    }
-    else {
-      h = newH;
-      Serial.println(h);
-    }
-  }
+void loop(){
 }
